@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define your beans here -->
+
+    <!-- Example of a simple bean definition -->
+    <bean id="empbean" class="Employee">
+        <!-- Example of setting property values in a bean -->
+<!--        <property name="propertyName" value="propertyValue"/>-->
+        <!--<property name=id" value="101"/>-->
+        <!--<property name="name" value="101"/>-->
+        <!--<property name="addr" ref="addr"/>-->
+    <!--</bean>-->
+
+        <constructor-arg value="101" type="int"/>
+        <constructor-arg value="Ruth" />
+<!--        string takes type by default-->
+        <constructor-arg ref = "addr"/>
+        <constructor-arg>
+            <map>
+                <entry key="1" value="Ruth"> </entry>
+                <entry key="2" value="Preeti"> </entry>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <!-- Example of another bean with constructor injection -->
+<!--    <bean id="anotherBean" class="com.example.AnotherBeanClass">-->
+<!--        <constructor-arg ref="myBean"/>-->
+<!--    </bean>-->
+
+
+<!--packageName.className-->
+    <bean id="addr" class="Address">
+<!--        follow constructor value order (id , city, state)-->
+<!--        this is called dependecy , constructor-injection-->
+        <constructor-arg value="200" type="int"/>
+        <constructor-arg value="Sterling"/>
+        <constructor-arg value="VA"/>
+    </bean>
+
+
+<!--    //q_no, String question, List<String> answers-->
+    <bean id="q" class="Question">
+        <constructor-arg value="1" type="int"/>
+        <constructor-arg value="Why is it so cold?"/>
+<!--        creating the list here-->
+        <constructor-arg>
+            <list>
+                <value> Jet Stream</value>
+                <value>Winter</value>
+                <value> AC </value>
+            </list>
+        </constructor-arg>
+
+    </bean>
+
+</beans>
